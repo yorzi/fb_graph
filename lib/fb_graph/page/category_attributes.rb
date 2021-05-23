@@ -60,7 +60,10 @@ module FbGraph
       attr_accessor *@@category_attributes.values.flatten
 
       def self.included(klass)
-        klass.alias_method_chain :initialize, :category_specific_attributes
+        # klass.alias_method_chain :initialize, :category_specific_attributes
+
+        klass.alias_method :initialize_without_category_specific_attributes, :initialize
+        klass.alias_method :initialize, :initialize_with_category_specific_attributes
       end
 
       def initialize_with_category_specific_attributes(identifier, attributes = {})

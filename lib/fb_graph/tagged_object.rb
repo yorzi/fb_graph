@@ -20,6 +20,9 @@ module FbGraph
       end
       klass.new attributes[:id], attributes
     end
-    alias_method_chain :fetch, :class_determination
+    # alias_method_chain :fetch, :class_determination
+
+    alias_method :fetch_without_class_determination, :fetch
+    alias_method :fetch, :fetch_with_class_determination
   end
 end

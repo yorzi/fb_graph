@@ -9,6 +9,8 @@ module Rack::OAuth2::Util
       end
       result
     end
-    alias_method_chain :compact_hash, :blank_redirect_uri
+    # alias_method_chain :compact_hash, :blank_redirect_uri
+    alias_method :compact_hash_without_blank_redirect_uri, :compact_hash
+    alias_method :compact_hash, :compact_hash_with_blank_redirect_uri
   end
 end

@@ -103,7 +103,9 @@ module FbGraph
       access_token_without_auto_fetch ||
       self.secret && get_access_token
     end
-    alias_method_chain :access_token, :auto_fetch
+    # alias_method_chain :access_token, :auto_fetch
+    alias_method :access_token_without_auto_fetch, :access_token
+    alias_method :access_token, :access_token_with_auto_fetch
 
     def debug_token(input_token)
       _input_token_ = case input_token

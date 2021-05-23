@@ -54,6 +54,8 @@ module FbGraph
         _endpoint_.to_s
       end
     end
-    alias_method_chain :picture, :access_token
+    # alias_method_chain :picture, :access_token
+    alias_method :picture_without_access_token, :picture
+    alias_method :picture, :picture_with_access_token
   end
 end
